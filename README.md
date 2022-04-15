@@ -1,7 +1,10 @@
 
-    # readme
-    # Made by brandon Snyder
+    # README Generator
+    # Made by Brandon Snyder
     # License [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]
+
+
+link to video https://drive.google.com/file/d/1ZXrt_dFxjyvllg5QHHsXlxGSOYtttdZU/view
 
     ## Table of Contents
         - [Description](#description)
@@ -14,16 +17,16 @@
     
     
     ## Description 
-    Brief Description: Create a read me off of use inputs 
+    Brief Description: This will generate a README  
 
     ##Screenshots
     
 
     ## Installation
-    ensure all npm are install from the package.json
+    npm i
     
     ## Usage
-    node.js
+    node 
     
     ## License
     MIT License:
@@ -39,5 +42,5 @@
 
     ## Questions
     If you have any questions on this project feel free to do a deep dive in my github or reach out via email.
-    github: [BrandonSnyder](https://github.com/BrandonSnyder)
-    email: [Brandon.snyder019@gmail.com](Brandon.snyder019@gmail.com)
+    github: [Brandonsnyder](https://github.com/Brandonsnyder)
+    email: [brandon.snyder019@gmail.com](brandon.snyder019@gmail.com)
