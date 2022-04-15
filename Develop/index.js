@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer')
+const generateMarkdown = require('./utils/generateMarkdown')
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -21,34 +22,19 @@ const questions = [
       },
       {
         type: 'input',
-        message: 'What was your motivation for this project?',
-        name: 'motivation',
-      },
-      {
-        type: 'input',
-        message: 'What languages did you use in your project?',
-        name: 'languages',
-      },
-      {
-        type: 'input',
-        message: 'What kind of features did you have in the project?',
-        name: 'features'
-      },
-      {
-        type: 'input',
         message: 'Give me brief installation instructions',
         name: 'installInst',
       },
       {
         type: 'input',
-        message: 'How can someone use this application',
+        message: 'What does the user need to run this program',
         name: 'appUse',
       },
       {
         type: 'list',
         message: 'Choose a license',
         name: 'license',
-        choices: ['Open','GNU (General Public License)','EULA (End-User License Agreement)']
+        choices: ['MIT License','GNU GPLv3','Apache License 2.0']
       },
       {
         type: 'input',
@@ -77,62 +63,12 @@ fs.appendFile(fileName, data , (error, response) =>{
     error ? console.error(error) : console.log(response)
 })}
 // TODO: Create a function to initialize app
-function init(arrOfQuestions) {
-    inquirer.prompt(arrOfQuestions).then((response) => { 
-        console.log(response)
-    let pageInfo = (`
-    # ${response.projectTitle}
-    # Made by ${response.name}
-    
-    ## Table of Contents
-        -Description
-        -Installation
-        -Usage 
-        -License   
-        -Contributing
-        -Tests
-        -Questions
-    
-    
-    ## Description 
-    Brief Description: ${response.briefDescription} 
-    
-    Why:-${response.motivation}
-    
-    How:
-    Languages: ${response.languages} 
-    Features: ${response.features}
-
-    ## Screenshots
-    
-
-    ## Installation
-    ${response.installInst}
-    
-    ## Usage
-    ${response.appUse}
-
-    ## Features
-    ${response.features}
-    
-    ## License
-    ${response.license}
-    
-    ## Contributors
-    ${response.contributors}
-    
-    ## Tests
-    ${response.tests}
-
-    ## Questions
-    If you have any questions on this project feel free to do a deep dive in my github or reach out via email.
-    github: ${response.github}
-    email:${response.email}
-    `)
-
-        writeToFile("README.md",pageInfo)
-
-})};
+function init(arrayOfQuestions) {
+    inquirer.prompt(arrayOfQuestions)
+    .then((response) => { 
+      const markdown = generateMarkdown(response)
+      writeToFile("README.md", markdown)
+    })};
 
 // Function call to initialize app
 init(questions);
